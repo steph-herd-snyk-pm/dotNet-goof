@@ -26,7 +26,7 @@ steps:
 - script: npm i -g snyk
 - script: snyk test || true
   env:
-    SNYK_TOKEN: 7007655b-1add-4b2a-97a6-f255015dc6da
+    SNYK_TOKEN: $(SNYK_TOKEN)
 - script: snyk monitor --org=0343b621-7d06-4141-8086-670bd151e055 --project-name=dotNet-goof-azure-pipelines
   env:
-    SNYK_TOKEN: 7007655b-1add-4b2a-97a6-f255015dc6da    
+    SNYK_TOKEN: $(SNYK_TOKEN)    
