@@ -23,10 +23,9 @@ steps:
     versionSpec: '>=6.10.0' 
     checkLatest: true # Optional
 # Write the installed version to the command line
-- script: npm i -g snyk
-- script: snyk test || true
-  env:
-    SNYK_TOKEN: $(SNYK_TOKEN)
-- script: snyk monitor --org=0343b621-7d06-4141-8086-670bd151e055 --project-name=dotNet-goof-azure-pipelines
-  env:
-    SNYK_TOKEN: $(SNYK_TOKEN)    
+- task: SnykSecurityScan@1
+  inputs:
+    serviceConnectionEndpoint: 'Snyk'
+    testType: 'app'
+    monitorWhen: 'always'
+    failOnIssues: true
